@@ -5,8 +5,8 @@ import {
   getPokemonById,
   getPokemonByName,
 } from "../../src/api/pokeapi";
+import { ButtonStyled, ContainerStyled, ImageStyled, InputStyled } from "./styles"
 
-import "tailwindcss/tailwind.css";
 interface BasePokemon {
   name: string;
   url: string;
@@ -35,23 +35,20 @@ const Play = () => {
   }, [id]);
 
   return (
-    <div className="ml-3">
+    <ContainerStyled>
       {console.log(currentPokemon?.sprites?.back_default)}
-      <p className="text-sm font-medium text-gray-900">
+      <p>
         Pokemon Name: {currentPokemon?.name}
       </p>
-      <img
-        className="h-10 w-10 rounded-full"
+      <InputStyled/>
+      <ImageStyled
         src={currentPokemon?.sprites?.front_default}
         alt={currentPokemon?.name || ""}
       />
-      <button
-        className="p-2 pl-5 pr-5 bg-transparent border-2 border-green-500 text-green-500 text-lg rounded-lg hover:bg-green-500 hover:text-gray-100 focus:border-4 focus:border-green-300"
-        onClick={handleNextPokemonFetching}
-      >
+      <ButtonStyled onClick={handleNextPokemonFetching}>
         Next pokemon
-      </button>
-    </div>
+      </ButtonStyled>
+    </ContainerStyled>
   );
 };
 
